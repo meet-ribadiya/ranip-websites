@@ -1,36 +1,35 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SSIS Ranip Website
 
-## Getting Started
+A responsive school website for Shree Swaminarayan International School, built with Next.js App Router, TypeScript, Tailwind CSS 4 and Lucide icons.
 
-First, run the development server:
+## Getting started
 
 ```bash
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) while the development server is running.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Production checks
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run lint
+npm run build
+npm run start
+```
 
-## Learn More
+The build prerenders the public routes and generates the sitemap and robots file.
 
-To learn more about Next.js, take a look at the following resources:
+## Site structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `src/app/` contains the homepage, About, Academics, Gallery, Careers and Contact routes, plus metadata routes.
+- `src/components/` contains the shared navigation, footer, contact actions, page intros and homepage sections.
+- `src/lib/constants.ts` holds the school’s contact details, admissions and ERP links, navigation, and local image references.
+- `public/` contains the school logo and supplied campus photography.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Update school phone numbers, address, email, social links, admissions link and ERP link in `src/lib/constants.ts`. Keep public-facing results, testimonials and event announcements tied to current school-approved material.
 
-## Deploy on Vercel
+## Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Deploy the repository to a Next.js-compatible host such as Vercel or a Node.js server. The canonical site URL is configured as `https://ssisranip.com` in the root metadata, robots and sitemap files; update those values if the production domain changes.
