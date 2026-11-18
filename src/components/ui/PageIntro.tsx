@@ -14,7 +14,9 @@ export default function PageIntro({ eyebrow, title, description, image = "/banne
   return (
     <section className="relative flex min-h-[380px] items-end overflow-hidden bg-[#10284B] pb-12 pt-32 text-white sm:min-h-[440px] sm:pb-16">
       <Image src={image} alt="" fill priority sizes="100vw" className="object-cover opacity-30" />
-      <div className="absolute inset-0 bg-gradient-to-r from-[#10284B]/95 via-[#10284B]/75 to-[#10284B]/35" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#10284B]/95 via-[#10284B]/80 to-[#10284B]/40" />
+      <div className="animated-dots absolute inset-0 opacity-15" aria-hidden="true" />
+      <div className="absolute -right-32 -top-32 h-96 w-96 rounded-full bg-[#E9A53B]/10 blur-3xl" aria-hidden="true" />
       <div className="section-container relative w-full">
         <p className="eyebrow eyebrow-light">{eyebrow}</p>
         <h1 className="mt-4 max-w-4xl font-serif text-4xl font-semibold leading-tight sm:text-6xl">{title}</h1>

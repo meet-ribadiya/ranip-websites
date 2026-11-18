@@ -5,12 +5,25 @@ type SectionHeadingProps = {
   id?: string;
 };
 
-export default function SectionHeading({ eyebrow, title, description, id }: SectionHeadingProps) {
+export default function SectionHeading({
+  eyebrow,
+  title,
+  description,
+  id,
+}: SectionHeadingProps) {
+  const descriptionNode = description ? (
+    <p className="mt-4 text-base leading-7 text-slate-600 sm:text-lg">
+      {description}
+    </p>
+  ) : null;
+
   return (
     <div className="mx-auto max-w-2xl text-center">
       <p className="eyebrow">{eyebrow}</p>
-      <h2 id={id} className="section-title mt-3">{title}</h2>
-      {description ? <p className="mt-4 text-base leading-7 text-slate-600 sm:text-lg">{description}</p> : null}
+      <h2 id={id} className="section-title mt-3">
+        {title}
+      </h2>
+      {descriptionNode}
     </div>
   );
 }

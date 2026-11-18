@@ -1,30 +1,10 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display, Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import FloatingButtons from "@/components/ui/FloatingButtons";
+import PageLoader from "@/components/ui/PageLoader";
 import { SITE_CONFIG } from "@/lib/constants";
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["400", "500", "600", "700", "800", "900"],
-});
-
-const poppins = Poppins({
-  variable: "--font-poppins",
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["300", "400", "500", "600", "700"],
-});
 
 export const metadata: Metadata = {
   title: {
@@ -38,6 +18,7 @@ export const metadata: Metadata = {
     "CBSE school Ahmedabad",
     "School in Ranip",
     "School in Ahmedabad",
+    "Best school Ranip Gujarat",
   ],
   metadataBase: new URL("https://ssisranip.com"),
   alternates: { canonical: "/" },
@@ -47,11 +28,20 @@ export const metadata: Metadata = {
     siteName: SITE_CONFIG.name,
     locale: "en_IN",
     type: "website",
+    images: [
+      {
+        url: "/banner11.webp",
+        width: 1400,
+        height: 750,
+        alt: "Shree Swaminarayan International School Ranip",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: `${SITE_CONFIG.name} | SSISRANIP`,
     description: SITE_CONFIG.description,
+    images: ["/banner11.webp"],
   },
 };
 
@@ -61,11 +51,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${inter.variable} ${playfair.variable} ${poppins.variable} antialiased`}
-      >
-        <a href="#main-content" className="skip-link">Skip to main content</a>
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="antialiased font-sans" suppressHydrationWarning>
+        <a href="#main-content" className="skip-link">
+          Skip to main content
+        </a>
+        <PageLoader />
         <Navbar />
         <main id="main-content">{children}</main>
         <Footer />
