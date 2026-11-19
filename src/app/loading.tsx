@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { SITE_IMAGES } from "@/lib/constants";
 
 const ringStyle = {
   borderTopColor: "#e4a13a",
@@ -15,7 +16,7 @@ export default function Loading() {
         />
         <div className="relative flex h-14 w-14 items-center justify-center">
           <Image
-            src="/logo-ssisranip.webp"
+            src={SITE_IMAGES.logo}
             alt="Loading SSIS Ranip"
             width={48}
             height={44}

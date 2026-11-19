@@ -17,6 +17,7 @@ import {
   EVENTS_IMPORTANCE,
   GALLERY_ALBUMS,
   GALLERY_IMAGES,
+  PAGE_INTROS,
   SCHOOL_EVENTS,
   SPORTS_DATA,
   TOURS_DATA,
@@ -202,15 +203,15 @@ export default function GalleryPage() {
   return (
     <>
       <PageIntro
-        eyebrow="Life at SSIS Ranip"
-        title="Gallery, Events, Sports & Educational Excursions."
-        description="Explore our campus moments, 26 cultural and academic celebrations, state & national sports champions, and educational trips across India."
-        image="/banner66-scaled.webp"
-        breadcrumb="Gallery & Life"
+        eyebrow={PAGE_INTROS.gallery.eyebrow}
+        title={PAGE_INTROS.gallery.title}
+        titleHighlight={PAGE_INTROS.gallery.titleHighlight}
+        description={PAGE_INTROS.gallery.description}
+        image={PAGE_INTROS.gallery.image}
       />
 
-      {/* Quick Sub-navigation */}
-      <div className="border-b border-slate-200 bg-white py-4">
+      {/* Quick Sub-navigation (desktop only) */}
+      <div className="hidden md:block border-b border-slate-200 bg-white py-4">
         <div className="section-container flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-sm font-semibold text-[#142C55]">
           <a href="#photos" className="hover:text-[#B87318]">
             Photo Gallery & Albums

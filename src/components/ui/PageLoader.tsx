@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { SITE_IMAGES } from "@/lib/constants";
 
 const ringStyle = {
   borderTopColor: "#e4a13a",
@@ -60,7 +61,7 @@ export default function PageLoader() {
         />
         <div className="relative h-20 w-20 flex items-center justify-center">
           <Image
-            src="/logo-ssisranip.webp"
+            src={SITE_IMAGES.logo}
             alt="SSIS Ranip"
             width={72}
             height={65}

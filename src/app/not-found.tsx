@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Home } from "lucide-react";
+import { SITE_IMAGES } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Page Not Found",
@@ -22,7 +23,7 @@ export default function NotFound() {
 
       <div className="relative flex flex-col items-center px-6 text-center">
         <Image
-          src="/logo-ssisranip.webp"
+          src={SITE_IMAGES.logo}
           alt="SSIS Ranip"
           width={72}
           height={65}

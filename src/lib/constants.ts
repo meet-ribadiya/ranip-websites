@@ -1,4 +1,26 @@
-// Comprehensive site constants and authentic content from https://ssisranip.com/
+// ============================================================================
+// CENTRALIZED CONTENT & IMAGES CONFIGURATION
+// Edit text content, contact details, links, and image paths in THIS single
+// file to update the entire SSIS Ranip website automatically.
+// ============================================================================
+
+export const SITE_IMAGES = {
+  logo: "/logo-ssisranip.webp",
+  ogImage: "/banner11.webp",
+  defaultPageBanner: "/banner11.webp",
+  homeAboutPhoto: "/bg-kids2-min-1.jpg",
+  homeSportsPhoto: "/result-bg.webp",
+  aboutStoryPhoto: "/banner2.webp",
+  academicsBanner: "/banner44.webp",
+  galleryBanner: "/banner66-scaled.webp",
+  careersBanner: "/banner5.jpg",
+  contactBanner: "/banner11.webp",
+  heroSlide1: "/banner5.jpg",
+  heroSlide2: "/banner11.webp",
+  heroSlide3: "/banner2.webp",
+  heroSlide4: "/banner44.webp",
+  heroSlide5: "/banner6.webp",
+} as const;
 
 export const SITE_CONFIG = {
   name: "Shree Swaminarayan International School",
@@ -663,3 +685,240 @@ export const TOURS_DATA = {
     },
   ],
 };
+
+
+// ─── Centralized Page Hero Intros ───────────────────────────────────────────
+export const PAGE_INTROS = {
+  about: {
+    eyebrow: "About SSIS Ranip",
+    title: "Where education means",
+    titleHighlight: "all-round development of the child.",
+    description:
+      "Welcome to Shree Swaminarayan International School (SSIS). Whether you are from any part of the city or state, or from elsewhere in India, we aim to help you make the best of educational opportunity that SSIS can offer you.",
+    image: SITE_IMAGES.defaultPageBanner,
+  },
+  academics: {
+    eyebrow: "Academics, Courses & Campus Life",
+    title: "Comprehensive education from",
+    titleHighlight: "Pre-Primary to JEE & NEET.",
+    description:
+      "Explore our academic streams, JEE & NEET preparation, 14 state-of-the-art campus facilities, Parent's Corner, Student's Corner, and latest school news.",
+    image: SITE_IMAGES.academicsBanner,
+  },
+  gallery: {
+    eyebrow: "Life at SSIS Ranip",
+    title: "Gallery, Events, Sports &",
+    titleHighlight: "Educational Excursions.",
+    description:
+      "Explore our campus moments, 26 cultural and academic celebrations, state & national sports champions, and educational trips across India.",
+    image: SITE_IMAGES.galleryBanner,
+  },
+  careers: {
+    eyebrow: "Careers at SSIS Ranip",
+    title: "Help young minds discover",
+    titleHighlight: "what’s possible.",
+    description:
+      "Join a 3,000+ student school community in Ranip, Ahmedabad built around academic excellence, Sanskars, and all-round development.",
+    image: SITE_IMAGES.careersBanner,
+  },
+  contact: {
+    eyebrow: "We’re Here to Help",
+    title: "Let’s talk about",
+    titleHighlight: "your child’s next step.",
+    description:
+      "Contact Shree Swaminarayan International School in Ranip, Ahmedabad for admissions enquiries, campus tours, and academic information.",
+    image: SITE_IMAGES.contactBanner,
+  },
+  privacyPolicy: {
+    eyebrow: "Legal & Privacy",
+    title: "Privacy",
+    titleHighlight: "Policy",
+    description:
+      "How Shree Swaminarayan International School, Ranip collects, uses, and safeguards your information.",
+    image: SITE_IMAGES.defaultPageBanner,
+  },
+  termCondition: {
+    eyebrow: "Terms of Use",
+    title: "Term &",
+    titleHighlight: "Condition",
+    description:
+      "Website terms and conditions governing the use of ssisranip.com.",
+    image: SITE_IMAGES.defaultPageBanner,
+  },
+  refundCancellation: {
+    eyebrow: "Admissions Policy",
+    title: "Refund &",
+    titleHighlight: "Cancellation",
+    description:
+      "Guidelines and rules regarding admission cancellation and fee refund.",
+    image: SITE_IMAGES.defaultPageBanner,
+  },
+} as const;
+
+// ─── Homepage Component Content ─────────────────────────────────────────────
+export const HERO_STATS = [
+  { label: "3,000+ Students", sub: "2-Acre AC Campus" },
+  { label: "Est. 2012", sub: "Gurukul Trust (1992)" },
+] as const;
+
+export const EXPERIENCE_PILLARS = [
+  {
+    id: "all-round",
+    number: "01",
+    iconKey: "book" as const,
+    title: "All-Round Development",
+    summary: "We believe that a happy child is a successful one.",
+    details:
+      "We don't only teach—we groom the personality of children in a welcoming, safe, and air-conditioned learning environment where every achievement is celebrated.",
+  },
+  {
+    id: "sanskars",
+    number: "02",
+    iconKey: "heart" as const,
+    title: "Sanskars & Discipline",
+    summary: "Blending India's spiritual heritage with modern education.",
+    details:
+      "Discipline and a sense of responsibility are nurtured as core values through a well-planned academic and co-curricular schedule rooted in Swaminarayan Sanskars.",
+  },
+  {
+    id: "transform",
+    number: "03",
+    iconKey: "sparkles" as const,
+    title: "Teach, Inspire & Transform",
+    summary: "Holistic growth guided by faculty with up to 30 years' experience.",
+    details:
+      "We stress the total development of each child—spiritual, moral, intellectual, social, emotional, and physical—so students thrive with confidence.",
+  },
+];
+
+export const HOME_FEATURED_NEWS = [
+  {
+    title: "Exhibition “Aakruti” — The Concept of Creation",
+    date: "2nd October (Gandhi Jayanti)",
+    summary:
+      "Students showcased live projects across Science, Maths, IT, Social Studies, and English with media coverage.",
+    description:
+      "On Gandhi Jayanti, SSIS organized the grand 'Aakruti' exhibition where students demonstrated logical, technical, and intellectual skills across live projects in Science, Maths, IT, Social Studies, and English. The event received media coverage from Metro Times-News and News 9 India Gujarati with enthusiastic parent participation.",
+  },
+  {
+    title: "7th Annual Function Celebration",
+    date: "20th February",
+    summary:
+      "A grand showcase of singing, dancing, drama, and anchoring graced by eminent national & international guests.",
+    description:
+      "A grand platform for students to showcase their talent in singing, dancing, acting, and anchoring under expert guidance. Graced by eminent dignitaries including Prof. Hiroyuki Sato (Tokyo University, Japan), Cabinet Minister Kunvarji Bavaliya, MLA Shri Bhupendrabhai Patel, MLA Shri Arvindbhai Patel, and Gujarati artist Vijay Suvada.",
+  },
+  {
+    title: "Shakotsav Celebration — “भुक्खे भजन ना होये गोपाला”",
+    date: "9th February",
+    summary:
+      "Traditional annual Trust celebration after three days of Katha serving Brinjal curry, Millet Rotla, and Kadhi-Khichdi.",
+    description:
+      "Keeping in mind the famous saying that one cannot worship God on an empty stomach, Shree Swaminarayan Trust organizes 'Shakotsav' every year after three days of Katha, serving traditional delicacies of Brinjal (Aubergine) curry, Millet bread (Rotla), and Kadhi-Khichdi.",
+  },
+];
+
+export const LIFE_AT_SSIS_SPOTLIGHT = [
+  {
+    src: SITE_IMAGES.heroSlide2,
+    alt: "School Campus & Assembly",
+    category: "Campus",
+    title: "2-Acre Serene Campus",
+    subtitle:
+      "Bright, ventilated spaces built for joyful everyday learning in Ranip.",
+  },
+  {
+    src: SITE_IMAGES.heroSlide3,
+    alt: "Students Learning in Classroom",
+    category: "Academics",
+    title: "Interactive Classrooms",
+    subtitle:
+      "Air-conditioned smart learning rooms inspiring curiosity and confidence.",
+  },
+  {
+    src: SITE_IMAGES.heroSlide4,
+    alt: "Annual Sports Day",
+    category: "Sports",
+    title: "Sports & Teamwork",
+    subtitle:
+      "Torch-bearing ceremonies, Khel Mahakumbh spirit, and active play.",
+  },
+  {
+    src: SITE_IMAGES.heroSlide1,
+    alt: "Cultural & Festival Celebrations",
+    category: "Events",
+    title: "26 Annual Celebrations",
+    subtitle:
+      "From Annual Function and Garba to Shakotsav and Science Exhibitions.",
+  },
+];
+
+// ─── About Us Stats, Values & Careers Qualities ─────────────────────────────
+export const ABOUT_STATS = [
+  {
+    id: "established",
+    label: "Established",
+    target: 2012,
+    suffix: "",
+    useComma: false,
+    sub: "In Ranip, Ahmedabad",
+    iconKey: "calendar" as const,
+  },
+  {
+    id: "trust-legacy",
+    label: "Trust Legacy",
+    target: 1992,
+    suffix: "",
+    useComma: false,
+    sub: "Vishvamangal Gurukul Trust",
+    iconKey: "landmark" as const,
+  },
+  {
+    id: "students",
+    label: "Student Strength",
+    target: 3000,
+    suffix: "+",
+    useComma: true,
+    sub: "Earned in 5 Years",
+    iconKey: "users" as const,
+  },
+  {
+    id: "campus",
+    label: "Campus Area",
+    target: 2,
+    suffix: " Acres",
+    useComma: false,
+    sub: "Fully Air-Conditioned Classrooms",
+    iconKey: "pin" as const,
+  },
+];
+
+export const GROWTH_PILLARS = [
+  "Spiritual",
+  "Moral",
+  "Intellectual",
+  "Social",
+  "Emotional",
+  "Physical",
+] as const;
+
+export const CAREER_QUALITIES = [
+  {
+    number: "01",
+    iconKey: "heart" as const,
+    title: "Care with purpose",
+    text: "Help create a respectful, disciplined, and supportive environment where every learner feels valued and inspired.",
+  },
+  {
+    number: "02",
+    iconKey: "lightbulb" as const,
+    title: "A curious mindset",
+    text: "Bring strong subject expertise, fresh teaching ideas, and a genuine commitment to continuous personal growth.",
+  },
+  {
+    number: "03",
+    iconKey: "users" as const,
+    title: "A team approach",
+    text: "Collaborate alongside experienced educators and engaged families to support the all-round growth of every student.",
+  },
+] as const;

@@ -4,7 +4,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import FloatingButtons from "@/components/ui/FloatingButtons";
 import PageLoader from "@/components/ui/PageLoader";
-import { SITE_CONFIG } from "@/lib/constants";
+import { SITE_CONFIG, SITE_IMAGES } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: {
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/banner11.webp",
+        url: SITE_IMAGES.ogImage,
         width: 1400,
         height: 750,
         alt: "Shree Swaminarayan International School Ranip",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${SITE_CONFIG.name} | SSISRANIP`,
     description: SITE_CONFIG.description,
-    images: ["/banner11.webp"],
+    images: [SITE_IMAGES.ogImage],
   },
 };
 
@@ -51,7 +51,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
