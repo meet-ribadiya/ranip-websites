@@ -1,7 +1,8 @@
 import type { MetadataRoute } from "next";
+import { getAllAlbumSlugs } from "@/data/gallery";
 
 const siteUrl = "https://ssisranip.com";
-const paths = [
+const staticPaths = [
   "",
   "/about-us",
   "/academics",
@@ -14,7 +15,10 @@ const paths = [
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return paths.map((path) => ({
+  const albumPaths = getAllAlbumSlugs().map((slug) => `/gallery/${slug}`);
+  const allPaths = [...staticPaths, ...albumPaths];
+
+  return allPaths.map((path) => ({
     url: `${siteUrl}${path}`,
     changeFrequency: "monthly",
     priority: path === "" ? 1 : 0.7,

@@ -96,7 +96,7 @@ All important website text, contact numbers, URLs, and image filenames are centr
 
 | Export Constant | What It Controls |
 |---|---|
-| `SITE_IMAGES` | Every image path used across the site (`logo`, `ogImage`, `homeAboutPhoto`, `homeSportsPhoto`, `aboutStoryPhoto`, all page banners & hero slides). Place new images in `public/` and update the filename here. |
+| `SITE_IMAGES` | Every image URL used across the site (hosted on Cloudinary CDN under `https://res.cloudinary.com/dhyji1ffs/image/upload/...` — `logo`, `ogImage`, `homeAboutPhoto`, `homeSportsPhoto`, `aboutStoryPhoto`, all page banners & hero slides). Update any URL here to change the image site-wide. |
 | `SITE_CONFIG` | School name, address, phone numbers, landline, WhatsApp, emails, ERP Login URL, Admission Portal URL, social media URLs, Vision, Mission, and Prayer quote. |
 | `NAV_LINKS` | Primary navigation menu labels and dropdown items. |
 | `PAGE_INTROS` | Hero eyebrows, mixed-color titles, descriptions, and banner images for every inner page. |
@@ -115,8 +115,9 @@ All important website text, contact numbers, URLs, and image filenames are centr
 
 The website is hardened for production deployment:
 
-1. **HTTP Security Headers (`next.config.ts`)**:
-   - `Content-Security-Policy (CSP)`: Restricts script, style, font, image, and frame origins strictly to `'self'`, Google Fonts, Google Maps embed, and YouTube thumbnails; blocks `<object>` (`object-src 'none'`) and clickjacking (`frame-ancestors 'self'`).
+1. **HTTP Security Headers & Strict Image Allowlist (`next.config.ts`)**:
+   - `images.remotePatterns`: Strictly locked to `https://res.cloudinary.com/dhyji1ffs/image/upload/**` so Next.js Image Optimization only proxies images from the school's verified Cloudinary account.
+   - `Content-Security-Policy (CSP)`: Restricts script, style, font, image, and frame origins strictly to `'self'`, `https://res.cloudinary.com/dhyji1ffs/`, Google Fonts, Google Maps embed, and YouTube thumbnails; blocks `<object>` (`object-src 'none'`) and clickjacking (`frame-ancestors 'self'`).
    - `Strict-Transport-Security (HSTS)`: Enforces HTTPS (`max-age=63072000; includeSubDomains; preload`).
    - `X-Frame-Options: SAMEORIGIN` & `X-Content-Type-Options: nosniff`.
    - `Referrer-Policy: strict-origin-when-cross-origin` & `Permissions-Policy` (disables camera, microphone, geolocation, browsing-topics).

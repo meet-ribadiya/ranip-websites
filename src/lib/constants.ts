@@ -5,21 +5,35 @@
 // ============================================================================
 
 export const SITE_IMAGES = {
-  logo: "/logo-ssisranip.webp",
-  ogImage: "/banner11.webp",
-  defaultPageBanner: "/banner11.webp",
-  homeAboutPhoto: "/bg-kids2-min-1.jpg",
-  homeSportsPhoto: "/result-bg.webp",
-  aboutStoryPhoto: "/banner2.webp",
-  academicsBanner: "/banner44.webp",
-  galleryBanner: "/banner66-scaled.webp",
-  careersBanner: "/banner5.jpg",
-  contactBanner: "/banner11.webp",
-  heroSlide1: "/banner5.jpg",
-  heroSlide2: "/banner11.webp",
-  heroSlide3: "/banner2.webp",
-  heroSlide4: "/banner44.webp",
-  heroSlide5: "/banner6.webp",
+  logo: "https://res.cloudinary.com/dhyji1ffs/image/upload/v1795177269/logo-ssisranip.webp",
+  ogImage:
+    "https://res.cloudinary.com/dhyji1ffs/image/upload/v1795177268/banner11.webp",
+  defaultPageBanner:
+    "https://res.cloudinary.com/dhyji1ffs/image/upload/v1795177268/banner11.webp",
+  homeAboutPhoto:
+    "https://res.cloudinary.com/dhyji1ffs/image/upload/v1795177269/bg-kids2-min-1.jpg",
+  homeSportsPhoto:
+    "https://res.cloudinary.com/dhyji1ffs/image/upload/v1795177268/result-bg.webp",
+  aboutStoryPhoto:
+    "https://res.cloudinary.com/dhyji1ffs/image/upload/v1795177268/banner2.webp",
+  academicsBanner:
+    "https://res.cloudinary.com/dhyji1ffs/image/upload/v1795177269/banner44.webp",
+  galleryBanner:
+    "https://res.cloudinary.com/dhyji1ffs/image/upload/v1795177269/banner66-scaled.webp",
+  careersBanner:
+    "https://res.cloudinary.com/dhyji1ffs/image/upload/v1795177268/banner5.jpg",
+  contactBanner:
+    "https://res.cloudinary.com/dhyji1ffs/image/upload/v1795177268/banner11.webp",
+  heroSlide1:
+    "https://res.cloudinary.com/dhyji1ffs/image/upload/v1795177268/banner5.jpg",
+  heroSlide2:
+    "https://res.cloudinary.com/dhyji1ffs/image/upload/v1795177268/banner11.webp",
+  heroSlide3:
+    "https://res.cloudinary.com/dhyji1ffs/image/upload/v1795177268/banner2.webp",
+  heroSlide4:
+    "https://res.cloudinary.com/dhyji1ffs/image/upload/v1795177269/banner44.webp",
+  heroSlide5:
+    "https://res.cloudinary.com/dhyji1ffs/image/upload/v1795177268/banner6.webp",
 } as const;
 
 export const SITE_CONFIG = {
@@ -106,7 +120,7 @@ export const NAV_LINKS = [
 export const HERO_SLIDES = [
   {
     id: 1,
-    image: "/banner5.jpg",
+    image: SITE_IMAGES.heroSlide1,
     title: "Igniting Minds,",
     titleHighlight: "Shaping Futures",
     subtitle:
@@ -116,7 +130,7 @@ export const HERO_SLIDES = [
   },
   {
     id: 2,
-    image: "/banner11.webp",
+    image: SITE_IMAGES.heroSlide2,
     title: "Do The Prayer,",
     titleHighlight: "Achieve Sanskars",
     subtitle:
@@ -126,7 +140,7 @@ export const HERO_SLIDES = [
   },
   {
     id: 3,
-    image: "/banner2.webp",
+    image: SITE_IMAGES.heroSlide3,
     title: "A Happy Child Is A",
     titleHighlight: "Successful One",
     subtitle:
@@ -136,7 +150,7 @@ export const HERO_SLIDES = [
   },
   {
     id: 4,
-    image: "/banner44.webp",
+    image: SITE_IMAGES.heroSlide4,
     title: "Excellence In",
     titleHighlight: "Sports & Beyond",
     subtitle:
@@ -146,7 +160,7 @@ export const HERO_SLIDES = [
   },
   {
     id: 5,
-    image: "/banner6.webp",
+    image: SITE_IMAGES.heroSlide5,
     title: "Teach, Inspire,",
     titleHighlight: "Transform & Nurture",
     subtitle:
@@ -417,14 +431,14 @@ export const SCHOOL_NEWS = [
 ];
 
 export const GALLERY_IMAGES = [
-  { src: "/banner11.webp", alt: "School Campus & Assembly", category: "Campus" },
-  { src: "/banner2.webp", alt: "Students Learning in Classroom", category: "Academics" },
-  { src: "/banner44.webp", alt: "Annual Sports Day", category: "Sports" },
-  { src: "/banner5.jpg", alt: "Cultural & Festival Celebrations", category: "Events" },
-  { src: "/banner6.webp", alt: "Guru Purnima & Sanskar Activities", category: "Culture" },
-  { src: "/banner66-scaled.webp", alt: "SSIS Ranip 2-Acre Campus Building", category: "Campus" },
-  { src: "/bg-kids2-min-1.jpg", alt: "Pre-Primary & Primary Students", category: "Students" },
-  { src: "/result-bg.webp", alt: "Morning Prayer & Assembly", category: "Assembly" },
+  { src: SITE_IMAGES.heroSlide2, alt: "School Campus & Assembly", category: "Campus" },
+  { src: SITE_IMAGES.heroSlide3, alt: "Students Learning in Classroom", category: "Academics" },
+  { src: SITE_IMAGES.heroSlide4, alt: "Annual Sports Day", category: "Sports" },
+  { src: SITE_IMAGES.heroSlide1, alt: "Cultural & Festival Celebrations", category: "Events" },
+  { src: SITE_IMAGES.heroSlide5, alt: "Guru Purnima & Sanskar Activities", category: "Culture" },
+  { src: SITE_IMAGES.galleryBanner, alt: "SSIS Ranip 2-Acre Campus Building", category: "Campus" },
+  { src: SITE_IMAGES.homeAboutPhoto, alt: "Pre-Primary & Primary Students", category: "Students" },
+  { src: SITE_IMAGES.homeSportsPhoto, alt: "Morning Prayer & Assembly", category: "Assembly" },
 ];
 
 export const GALLERY_ALBUMS = [
@@ -449,19 +463,19 @@ export const VIDEO_GALLERY = [
     id: "mgXxgO869TA",
     title: "SSIS Ranip — Annual Function Highlights I",
     url: "https://www.youtube.com/watch?v=mgXxgO869TA",
-    thumbnail: "https://i.ytimg.com/vi/mgXxgO869TA/hqdefault.jpg",
+    thumbnail: SITE_IMAGES.heroSlide1,
   },
   {
     id: "GBS9CU_3jaI",
     title: "SSIS Ranip — Annual Function Highlights II",
     url: "https://www.youtube.com/watch?v=GBS9CU_3jaI",
-    thumbnail: "https://i.ytimg.com/vi/GBS9CU_3jaI/hqdefault.jpg",
+    thumbnail: SITE_IMAGES.heroSlide5,
   },
   {
     id: "pgD-b2Oc6oM",
     title: "SSIS Ranip — Cultural Performances & Celebrations",
     url: "https://www.youtube.com/watch?v=pgD-b2Oc6oM",
-    thumbnail: "https://i.ytimg.com/vi/pgD-b2Oc6oM/hqdefault.jpg",
+    thumbnail: SITE_IMAGES.homeAboutPhoto,
   },
 ];
 
@@ -826,6 +840,7 @@ export const LIFE_AT_SSIS_SPOTLIGHT = [
     title: "2-Acre Serene Campus",
     subtitle:
       "Bright, ventilated spaces built for joyful everyday learning in Ranip.",
+    albumHref: "/gallery/campus-life",
   },
   {
     src: SITE_IMAGES.heroSlide3,
@@ -834,6 +849,7 @@ export const LIFE_AT_SSIS_SPOTLIGHT = [
     title: "Interactive Classrooms",
     subtitle:
       "Air-conditioned smart learning rooms inspiring curiosity and confidence.",
+    albumHref: "/gallery/academic-exhibitions",
   },
   {
     src: SITE_IMAGES.heroSlide4,
@@ -842,6 +858,7 @@ export const LIFE_AT_SSIS_SPOTLIGHT = [
     title: "Sports & Teamwork",
     subtitle:
       "Torch-bearing ceremonies, Khel Mahakumbh spirit, and active play.",
+    albumHref: "/gallery/sports-day",
   },
   {
     src: SITE_IMAGES.heroSlide1,
@@ -850,6 +867,7 @@ export const LIFE_AT_SSIS_SPOTLIGHT = [
     title: "26 Annual Celebrations",
     subtitle:
       "From Annual Function and Garba to Shakotsav and Science Exhibitions.",
+    albumHref: "/gallery/annual-function",
   },
 ];
 

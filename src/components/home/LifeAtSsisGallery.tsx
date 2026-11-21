@@ -1,12 +1,24 @@
 "use client";
 
-import { useEffect, useRef, useState, type TouchEvent } from "react";
+import { useRef, useState, type TouchEvent } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ChevronLeft, ChevronRight, Expand, X } from "lucide-react";
+import { ArrowRight, Expand } from "lucide-react";
 import { LIFE_AT_SSIS_SPOTLIGHT } from "@/lib/constants";
+import ImageLightbox, {
+  type LightboxImageItem,
+} from "@/components/ui/ImageLightbox";
 
 const spotlightImages = LIFE_AT_SSIS_SPOTLIGHT;
+
+const lightboxItems: LightboxImageItem[] = spotlightImages.map((item, idx) => ({
+  id: `life-ssis-${idx}`,
+  src: item.src,
+  alt: item.alt,
+  caption: `${item.title} — ${item.subtitle}`,
+  actionHref: item.albumHref,
+  actionLabel: `Open ${item.category} Album`,
+}));
 
 export default function LifeAtSsisGallery() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -20,28 +32,6 @@ export default function LifeAtSsisGallery() {
 
   const openLightbox = (index: number) => setLightboxIndex(index);
   const closeLightbox = () => setLightboxIndex(null);
-
-  const lightboxPrev = () => {
-    setLightboxIndex((prev) => (prev === null ? null : (prev - 1 + total) % total));
-  };
-  const lightboxNext = () => {
-    setLightboxIndex((prev) => (prev === null ? null : (prev + 1) % total));
-  };
-
-  useEffect(() => {
-    if (lightboxIndex === null) return;
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setLightboxIndex(null);
-      if (e.key === "ArrowLeft") {
-        setLightboxIndex((prev) => (prev === null ? null : (prev - 1 + total) % total));
-      }
-      if (e.key === "ArrowRight") {
-        setLightboxIndex((prev) => (prev === null ? null : (prev + 1) % total));
-      }
-    };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [lightboxIndex, total]);
 
   const handleTouchStart = (e: TouchEvent<HTMLDivElement>) => {
     const touch = e.touches[0];
@@ -62,7 +52,8 @@ export default function LifeAtSsisGallery() {
 
   const handleTouchEnd = () => {
     const { x, y } = touchDeltaRef.current;
-    const isHorizontalSwipe = Math.abs(x) > Math.abs(y) * 1.25 && Math.abs(x) > 40;
+    const isHorizontalSwipe =
+      Math.abs(x) > Math.abs(y) * 1.25 && Math.abs(x) > 40;
     if (isHorizontalSwipe) {
       if (x < 0) {
         goNext();
@@ -74,7 +65,6 @@ export default function LifeAtSsisGallery() {
     touchDeltaRef.current = { x: 0, y: 0 };
   };
 
-  // Desktop 4-panel horizontal expanding accordion (inspired by Nilkanth Films #events)
   const desktopPanels = spotlightImages.map((item, index) => {
     const isActive = index === activeIndex;
     const panelCls = `group relative overflow-hidden rounded-[2rem] border border-slate-200/60 bg-[#10284B] shadow-[0_20px_50px_rgba(16,40,75,0.12)] cursor-pointer transition-[flex-grow] duration-700 ease-out ${
@@ -93,6 +83,9 @@ export default function LifeAtSsisGallery() {
     const collapsedLabelCls = `absolute inset-0 flex items-center justify-center transition-opacity duration-500 ${
       isActive ? "opacity-0 pointer-events-none" : "opacity-100"
     }`;
+    const expandBtnCls = isActive
+      ? "absolute right-5 top-5 z-10 flex h-10 w-10 items-center justify-center rounded-full border border-white/25 bg-[#08172E]/45 text-white backdrop-blur-md transition hover:scale-105 hover:border-[#F0B95F] hover:text-[#F0B95F]"
+      : "hidden";
     const handleSelect = () => setActiveIndex(index);
     const handleExpandClick = (e: React.MouseEvent<HTMLButtonElement>) => {
       e.stopPropagation();
@@ -118,27 +111,20 @@ export default function LifeAtSsisGallery() {
           className={imgCls}
         />
 
-        {/* Editorial gradient scrim */}
         <div
           className="absolute inset-0 bg-gradient-to-t from-[#08172E]/90 via-[#08172E]/25 to-transparent"
           aria-hidden="true"
         />
 
-        {/* Active panel expand-to-lightbox button */}
         <button
           type="button"
           onClick={handleExpandClick}
           aria-label={`Open full preview of ${item.title}`}
-          className={
-            isActive
-              ? "absolute right-5 top-5 z-10 flex h-10 w-10 items-center justify-center rounded-full border border-white/25 bg-[#08172E]/45 text-white backdrop-blur-md transition hover:scale-105 hover:border-[#F0B95F] hover:text-[#F0B95F]"
-              : "hidden"
-          }
+          className={expandBtnCls}
         >
           <Expand size={16} />
         </button>
 
-        {/* Active panel caption */}
         <div className={activeCaptionCls}>
           <span className="inline-block rounded-full bg-[#E5A23C] px-3.5 py-1 text-xs font-bold uppercase tracking-[.15em] text-[#10284B]">
             {item.category}
@@ -150,14 +136,13 @@ export default function LifeAtSsisGallery() {
             {item.subtitle}
           </p>
           <Link
-            href="/gallery"
+            href={item.albumHref}
             className="mt-4 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-[.16em] text-[#F0B95F] transition hover:text-white"
           >
-            Explore Gallery <ArrowRight size={14} />
+            Open {item.category} Album <ArrowRight size={14} />
           </Link>
         </div>
 
-        {/* Inactive vertical strip rotated label */}
         <div className={collapsedLabelCls}>
           <span className="-rotate-90 whitespace-nowrap text-xs font-bold uppercase tracking-[0.26em] text-white/85 drop-shadow">
             {item.category}
@@ -167,7 +152,6 @@ export default function LifeAtSsisGallery() {
     );
   });
 
-  // Mobile & Tablet featured carousel + thumbnail strip
   const activeItem = spotlightImages[activeIndex];
   const handleMobileLightboxOpen = () => openLightbox(activeIndex);
 
@@ -217,88 +201,6 @@ export default function LifeAtSsisGallery() {
     );
   });
 
-  // Lightbox overlay node (pre-computed outside return)
-  const activeLightboxItem =
-    lightboxIndex !== null ? spotlightImages[lightboxIndex] : null;
-
-  const lightboxNode = activeLightboxItem ? (
-    <div
-      role="dialog"
-      aria-modal="true"
-      aria-label={activeLightboxItem.title}
-      className="fixed inset-0 z-[150] flex items-center justify-center bg-[#061224]/95 p-4 backdrop-blur-md"
-      onClick={closeLightbox}
-    >
-      <button
-        type="button"
-        onClick={closeLightbox}
-        aria-label="Close gallery preview"
-        className="absolute right-4 top-4 sm:right-8 sm:top-8 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition hover:bg-white/20"
-      >
-        <X size={20} />
-      </button>
-
-      <button
-        type="button"
-        onClick={(e) => {
-          e.stopPropagation();
-          lightboxPrev();
-        }}
-        aria-label="Previous photo"
-        className="absolute left-3 sm:left-8 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition hover:bg-white/20"
-      >
-        <ChevronLeft size={20} />
-      </button>
-
-      <div
-        className="relative w-full max-w-4xl overflow-hidden rounded-3xl border border-white/15 bg-[#0B1C35] shadow-2xl"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className="relative aspect-[4/3] sm:aspect-[16/10] w-full">
-          <Image
-            src={activeLightboxItem.src}
-            alt={activeLightboxItem.alt}
-            fill
-            sizes="90vw"
-            className="object-cover"
-          />
-        </div>
-        <div className="flex flex-col gap-1 p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-[.16em] text-[#F0B95F]">
-              {activeLightboxItem.category}
-            </p>
-            <h3 className="mt-1 font-serif text-xl font-semibold text-white">
-              {activeLightboxItem.title}
-            </h3>
-            <p className="mt-1 text-sm text-white/75">
-              {activeLightboxItem.subtitle}
-            </p>
-          </div>
-          <Link
-            href="/gallery"
-            onClick={closeLightbox}
-            className="btn-primary mt-3 w-fit sm:mt-0"
-          >
-            All Photos <ArrowRight size={15} />
-          </Link>
-        </div>
-      </div>
-
-      <button
-        type="button"
-        onClick={(e) => {
-          e.stopPropagation();
-          lightboxNext();
-        }}
-        aria-label="Next photo"
-        className="absolute right-3 sm:right-8 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition hover:bg-white/20"
-      >
-        <ChevronRight size={20} />
-      </button>
-    </div>
-  ) : null;
-
   return (
     <div className="mt-9">
       {/* Desktop (>=1024px): 4-Panel Expanding Editorial Accordion */}
@@ -345,24 +247,35 @@ export default function LifeAtSsisGallery() {
             <p className="mt-1.5 text-sm leading-6 text-white/80">
               {activeItem.subtitle}
             </p>
+            <Link
+              href={activeItem.albumHref}
+              className="mt-3 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-[.15em] text-[#F0B95F]"
+            >
+              Open {activeItem.category} Album <ArrowRight size={14} />
+            </Link>
           </div>
         </div>
 
-        {/* Indicator dots + swipe hint */}
         <div className="mt-5 flex items-center justify-between px-1">
           <div className="flex items-center gap-2">{mobileDotButtons}</div>
-          {/* <p className="text-xs font-semibold uppercase tracking-[.14em] text-slate-400">
+          <p className="text-xs font-semibold uppercase tracking-[.14em] text-slate-400">
             Swipe or tap thumbnails
-          </p> */}
+          </p>
         </div>
 
-        {/* 4-column aligned thumbnail strip */}
         <div className="mt-4 grid grid-cols-4 gap-2.5 sm:gap-3">
           {mobileThumbnails}
         </div>
       </div>
 
-      {lightboxNode}
+      {/* Unified Site-Wide Native-Quality Lightbox */}
+      <ImageLightbox
+        title="Life at SSIS Ranip"
+        items={lightboxItems}
+        activeIndex={lightboxIndex}
+        onClose={closeLightbox}
+        onChangeIndex={setLightboxIndex}
+      />
     </div>
   );
 }

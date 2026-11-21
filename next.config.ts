@@ -5,8 +5,8 @@ const cspHeader = [
   "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   "font-src 'self' https://fonts.gstatic.com data:",
-  "img-src 'self' data: blob: https://i.ytimg.com https://maps.gstatic.com https://maps.googleapis.com",
-  "frame-src 'self' https://maps.google.com https://www.google.com",
+  "img-src 'self' data: blob: https://res.cloudinary.com/dhyji1ffs/ https://i.ytimg.com https://maps.gstatic.com https://maps.googleapis.com",
+  "frame-src 'self' https://maps.google.com https://www.google.com https://www.youtube-nocookie.com https://www.youtube.com",
   "connect-src 'self'",
   "object-src 'none'",
   "base-uri 'self'",
@@ -36,6 +36,18 @@ const nextConfig: NextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
     deviceSizes: [375, 640, 750, 828, 1080, 1200, 1920],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+        pathname: "/dhyji1ffs/image/upload/**",
+      },
+      {
+        protocol: "https",
+        hostname: "i.ytimg.com",
+        pathname: "/vi/**",
+      },
+    ],
   },
   async headers() {
     return [
